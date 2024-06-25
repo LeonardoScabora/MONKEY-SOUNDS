@@ -14,7 +14,7 @@
 
 body{
     font-family: Arial, Helvetica, sans-serif;
-    background-color: var(--color-dark1);
+    background-color: red;
     color: var(--color-white);
     display: flex;
     justify-content: center;
@@ -52,8 +52,8 @@ h1{
     padding: 8px 5px;
     outline: none;
     border-radius: 5px;
-    background-color: var(--color-dark1);
-    border: 2px solid var(--color-dark1);
+    background-color: red;
+    border: 2px solid red;
     color: var(--color-white);
     width: 100%;
     box-sizing: border-box;
@@ -114,8 +114,15 @@ button:hover{
     }
 }
 
-.logo{
-   height: 50px;
-   width: 50px;
-   object-fit: cover;
+.container {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+
+}
+
+.logo {
+    height: 150px;
+    width: 150px;
 }

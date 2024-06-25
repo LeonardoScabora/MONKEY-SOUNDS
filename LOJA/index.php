@@ -5,18 +5,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login</title>
   <link href="MCSS/style.css" rel="stylesheet">
+
+  <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            flex-direction: row;
+            align-items: center;
+
+        }
+        .logo {
+            height: 150px;
+            width: 150px;
+        }
+    </style>
 </head>
 
 <body>
   <div class="content">
-    <h1>Login <img src="MCSS/imagens/logo.png" class="logo"></h1>
+  <div class="container">
+    <h1>MONKEY SOUNDS</h1>
+    <img src="MCSS/imagens/logo.png" alt="" class="logo">
+    </div>
+    <h1>Login</h1>
     <form id="form" method="POST">
       <div>
         <input type="text" placeholder="Digite seu e-mail" name="email" class="inputs required" oninput="emailValidate()">
         <span class="span-required">Digite um E-mail válido</span>
       </div>
       <div>
-        <input type="password" placeholder="Digite uma senha" name="senha" class="inputs required" oninput="senhaValidate()">
+        <input type="password" placeholder="Digite uma senha" name="senha" maxlength="12" class="inputs required" oninput="senhaValidate()">
         <span class="span-required">Digite uma senha com no minimo 6 caracteres</span>
       </div>
       <button type="submit">Entrar</button>
