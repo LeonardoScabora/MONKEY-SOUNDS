@@ -5,20 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login</title>
   <link href="MCSS/style.css" rel="stylesheet">
-
-  <style>
-        .container {
-            display: flex;
-            justify-content: center;
-            flex-direction: row;
-            align-items: center;
-
-        }
-        .logo {
-            height: 150px;
-            width: 150px;
-        }
-    </style>
 </head>
 
 <body>
