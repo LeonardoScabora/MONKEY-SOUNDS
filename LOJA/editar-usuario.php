@@ -1,14 +1,27 @@
 <?php
-if (isset($_POST['submit'])) {
+if (!empty($_GET['id'])) {
 
     include_once('config.php'); //Incluindo a conexão com o banco
-    $nome = $_POST['nome'];
-    $email = $_POST['email'];
-    $senha = $_POST['senha'];
 
-    $result = mysqli_query($conexao, "INSERT INTO usuarios(nome,email,senha) VALUES ('$nome','$email','$senha')");
+    $id = $_GET['id'];
 
-    header('Location: index.php');
+    $sqlSelect = "SELECT * FROM usuarios WHERE id='$id'";
+    
+    $result = $conexao->query($sqlSelect);
+
+    if($result->num_rows > 0){
+        
+        while($user_data = mysqli_fetch_assoc($result)){
+            $nome = $user_data['nome'];
+            $email = $user_data['email'];
+            $senha = $user_data['senha'];
+        }
+    }else{
+        header('Location: sistema.php');
+    }
+    
+}else{
+    header('Location: sistema.php');//Verificação para n entrar na apgina de editar sem clicar no botão
 }
 ?>
 
@@ -18,33 +31,28 @@ if (isset($_POST['submit'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro</title>
+    <title>Editar</title>
     <link href="MCSS/style-login.css" rel="stylesheet">
 </head>
 
 <body>
-
-
     <div class="content">
-        <div class="container">
-            <h1>MONKEY SOUNDS</h1>
-            <img src="MCSS/imagens/logo.png" alt="" class="logo">
-        </div>
-        <h1>Cadastro</h1>
-        <form action="cadastro.php" method="POST">
+        <h1>Editar Usuario</h1>
+        <form action="salve-usuario.php" method="POST">
             <div>
-                <input type="text" placeholder="Digite seu nome" name="nome" maxlength="55" class="inputs required">
+                <input type="text" placeholder="Digite seu nome" name="nome" maxlength="55" class="inputs required" value="<?php echo $nome ?>">
                 <span class="span-required">Digite um nome válido</span>
             </div>
             <div>
-                <input type="text" placeholder="Digite seu e-mail" name="email" class="inputs required" oninput="emailValidate()">
+                <input type="text" placeholder="Digite seu e-mail" name="email" class="inputs required" value="<?php echo $email ?>" oninput="emailValidate()" >
                 <span class="span-required">Digite um E-mail válido</span>
             </div>
             <div>
-                <input type="password" placeholder="Digite uma senha" name="senha" maxlength="12" class="inputs required" oninput="senhaValidate()">
+                <input type="text" placeholder="Digite uma senha" name="senha" maxlength="12" class="inputs required" value="<?php echo $senha ?>" oninput="senhaValidate()">
                 <span class="span-required">Digite uma senha com no minimo 6 caracteres</span>
             </div>
-            <input type="submit" name="submit" class="botaolink">
+            <input type="hidden" name="id" value="<?php echo $id ?>">
+            <input type="submit" name="update" id="update">
         </form>
     </div>
 </body>

@@ -1,20 +1,24 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login</title>
-  <link href="MCSS/style.css" rel="stylesheet">
+  <link href="MCSS/style-login.css" rel="stylesheet">
 </head>
 
 <body>
   <div class="content">
+    
   <div class="container">
-    <h1>MONKEY SOUNDS</h1>
-    <img src="MCSS/imagens/logo.png" alt="" class="logo">
+      <h1>MONKEY SOUNDS</h1>
+      <img src="MCSS/imagens/logo.png" alt="" class="logo">
     </div>
+
     <h1>Login</h1>
-    <form id="form" method="POST">
+    
+    <form action="teste-login.php" method="POST">
       <div>
         <input type="text" placeholder="Digite seu e-mail" name="email" class="inputs required" oninput="emailValidate()">
         <span class="span-required">Digite um E-mail válido</span>
@@ -24,11 +28,11 @@
         <span class="span-required">Digite uma senha com no minimo 6 caracteres</span>
       </div>
       <button type="submit">Entrar</button>
-        <a class="botaolink" href="cadastro.php" valeu="Cadastrar">Cadastrar</a>
+      <a class="botaolink" href="cadastro.php">Cadastrar</a>
     </form>
   </div>
-</body>
 
+</body>
 
 <script>
   const form = document.getElementById('form');
@@ -46,23 +50,23 @@
     spans[index].style.display = 'none';
   }
 
-  function emailValidate(){
-    if(!emailRegex.test(campos[0].value)){
+  function emailValidate() {
+    if (!emailRegex.test(campos[0].value)) {
       setError(0);
       console.log(' N VALIDADO');
-    }else{
+    } else {
       RemoveError(0);
       console.log('Validado');
     }
   }
 
-  function senhaValidate(){
-    if(campos[1].value.length < 6) {
+  function senhaValidate() {
+    if (campos[1].value.length < 6) {
       setError(1);
-    }else{
+    } else {
       RemoveError(1);
     }
   }
-
 </script>
+
 </html>
